@@ -2,6 +2,8 @@ use std::cmp::Reverse;
 
 use super::chars;
 use super::script::Script;
+use super::simplified_chinese;
+use super::traditional_chinese;
 use crate::utils::is_stop_char;
 
 type ScriptCounter = (Script, fn(char) -> bool, usize);
@@ -54,7 +56,7 @@ impl RawScriptInfo {
 }
 
 pub fn raw_detect_script(text: &str) -> RawScriptInfo {
-    let mut script_counters: [ScriptCounter; 25] = [
+    let mut script_counters: [ScriptCounter; 28] = [
         (Script::Latin, chars::is_latin, 0),
         (Script::Cyrillic, chars::is_cyrillic, 0),
         (Script::Arabic, chars::is_arabic, 0),
@@ -66,6 +68,7 @@ pub fn raw_detect_script(text: &str) -> RawScriptInfo {
         (Script::Bengali, chars::is_bengali, 0),
         (Script::Hangul, chars::is_hangul, 0),
         (Script::Hiragana, chars::is_hiragana, 0),
+        (Script::Kanji, chars::is_kanji, 0),
         (Script::Katakana, chars::is_katakana, 0),
         (Script::Greek, chars::is_greek, 0),
         (Script::Kannada, chars::is_kannada, 0),
@@ -77,6 +80,16 @@ pub fn raw_detect_script(text: &str) -> RawScriptInfo {
         (Script::Malayalam, chars::is_malayalam, 0),
         (Script::Oriya, chars::is_oriya, 0),
         (Script::Myanmar, chars::is_myanmar, 0),
+        (
+            Script::SimplifiedChinese,
+            simplified_chinese::is_simplified_chinese,
+            0,
+        ),
+        (
+            Script::TraditionalChinese,
+            traditional_chinese::is_traditional_chinese,
+            0,
+        ),
         (Script::Sinhala, chars::is_sinhala, 0),
         (Script::Khmer, chars::is_khmer, 0),
         (Script::Armenian, chars::is_armenian, 0),

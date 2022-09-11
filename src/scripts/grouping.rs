@@ -44,7 +44,7 @@ impl Script {
             Script::Arabic => Multi(MLS::Arabic),
             Script::Devanagari => Multi(MLS::Devanagari),
             Script::Hebrew => Multi(MLS::Hebrew),
-            Script::Mandarin => Mandarin,
+            Script::Mandarin | Script::SimplifiedChinese | Script::TraditionalChinese => Mandarin,
             Script::Bengali => One(Lang::Ben),
             Script::Hangul => One(Lang::Kor),
             Script::Georgian => One(Lang::Kat),
@@ -62,7 +62,7 @@ impl Script {
             Script::Khmer => One(Lang::Khm),
             Script::Ethiopic => One(Lang::Amh),
             Script::Armenian => One(Lang::Hye),
-            Script::Katakana | Script::Hiragana => One(Lang::Jpn),
+            Script::Katakana | Script::Hiragana | Script::Kanji => One(Lang::Jpn),
         }
     }
 }

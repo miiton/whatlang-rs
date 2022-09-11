@@ -58,7 +58,7 @@ pub fn script_langs(script: Script) -> &'static [Lang] {
         Script::Devanagari => &DEVANAGARI_LANGS,
         Script::Hebrew => &HEBREW_LANGS,
         Script::Arabic => &ARABIC_LANGS,
-        Script::Mandarin => &[Lang::Cmn],
+        Script::Mandarin | Script::SimplifiedChinese | Script::TraditionalChinese => &[Lang::Cmn],
         Script::Bengali => &[Lang::Ben],
         Script::Hangul => &[Lang::Kor],
         Script::Georgian => &[Lang::Kat],
@@ -76,7 +76,7 @@ pub fn script_langs(script: Script) -> &'static [Lang] {
         Script::Khmer => &[Lang::Khm],
         Script::Ethiopic => &[Lang::Amh],
         Script::Armenian => &[Lang::Hye],
-        Script::Katakana | Script::Hiragana => &[Lang::Jpn],
+        Script::Katakana | Script::Hiragana | Script::Kanji => &[Lang::Jpn],
     }
 }
 

@@ -26,6 +26,7 @@ pub enum Script {
     Hangul,
     Hebrew,
     Hiragana,
+    Kanji,
     Kannada,
     Katakana,
     Khmer,
@@ -34,14 +35,16 @@ pub enum Script {
     Mandarin,
     Myanmar,
     Oriya,
+    SimplifiedChinese,
     Sinhala,
     Tamil,
     Telugu,
     Thai,
+    TraditionalChinese,
 }
 
 // Array of all existing Script values.
-const VALUES: [Script; 25] = [
+const VALUES: [Script; 28] = [
     Script::Arabic,
     Script::Armenian,
     Script::Bengali,
@@ -55,6 +58,7 @@ const VALUES: [Script; 25] = [
     Script::Hangul,
     Script::Hebrew,
     Script::Hiragana,
+    Script::Kanji,
     Script::Kannada,
     Script::Katakana,
     Script::Khmer,
@@ -63,10 +67,12 @@ const VALUES: [Script; 25] = [
     Script::Mandarin,
     Script::Myanmar,
     Script::Oriya,
+    Script::SimplifiedChinese,
     Script::Sinhala,
     Script::Tamil,
     Script::Telugu,
     Script::Thai,
+    Script::TraditionalChinese,
 ];
 
 impl Script {
@@ -90,6 +96,7 @@ impl Script {
             Script::Arabic => "Arabic",
             Script::Devanagari => "Devanagari",
             Script::Hiragana => "Hiragana",
+            Script::Kanji => "Kanji",
             Script::Katakana => "Katakana",
             Script::Ethiopic => "Ethiopic",
             Script::Hebrew => "Hebrew",
@@ -108,8 +115,10 @@ impl Script {
             Script::Oriya => "Oriya",
             Script::Myanmar => "Myanmar",
             Script::Sinhala => "Sinhala",
+            Script::SimplifiedChinese => "SimplifiedChinese",
             Script::Khmer => "Khmer",
             Script::Armenian => "Armenian",
+            Script::TraditionalChinese => "TraditionalChinese",
         }
     }
 
@@ -134,12 +143,15 @@ impl FromStr for Script {
             "arabic" => Ok(Script::Arabic),
             "devanagari" => Ok(Script::Devanagari),
             "hiragana" => Ok(Script::Hiragana),
+            "kanji" => Ok(Script::Kanji),
             "katakana" => Ok(Script::Katakana),
             "ethiopic" => Ok(Script::Ethiopic),
             "hebrew" => Ok(Script::Hebrew),
             "bengali" => Ok(Script::Bengali),
             "georgian" => Ok(Script::Georgian),
             "mandarin" => Ok(Script::Mandarin),
+            "simplifiedchinese" => Ok(Script::SimplifiedChinese),
+            "traditionalchinese" => Ok(Script::TraditionalChinese),
             "hangul" => Ok(Script::Hangul),
             "greek" => Ok(Script::Greek),
             "kannada" => Ok(Script::Kannada),
@@ -165,7 +177,7 @@ mod tests {
 
     #[test]
     fn test_all() {
-        assert_eq!(Script::all().len(), 25);
+        assert_eq!(Script::all().len(), 28);
         let all = Script::all();
         assert!(all.contains(&Script::Cyrillic));
         assert!(all.contains(&Script::Arabic));
