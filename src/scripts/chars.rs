@@ -1,3 +1,5 @@
+use super::common_use_kanji::is_common_use_kanji;
+
 pub(crate) fn is_cyrillic(ch: char) -> bool {
     matches!(ch,
         '\u{0400}'..='\u{0484}'
@@ -83,6 +85,10 @@ pub(crate) fn is_bengali(ch: char) -> bool {
 
 pub(crate) fn is_hiragana(ch: char) -> bool {
     matches!(ch, '\u{3040}'..='\u{309F}')
+}
+
+pub(crate) fn is_kanji(ch: char) -> bool {
+    is_common_use_kanji(ch)
 }
 
 pub(crate) fn is_katakana(ch: char) -> bool {
@@ -227,6 +233,25 @@ mod tests {
     fn test_is_hiragana() {
         assert_eq!(is_hiragana('ひ'), true);
         assert_eq!(is_hiragana('a'), false);
+    }
+
+    #[test]
+    fn test_is_mandarin() {
+        assert_eq!(is_mandarin('東'), true);
+        assert_eq!(is_mandarin('东'), true);
+        assert_eq!(is_mandarin('a'), false);
+        assert_eq!(is_mandarin('1'), false);
+        assert_eq!(is_mandarin('_'), false);
+    }
+
+    #[test]
+    fn test_is_kanji() {
+        assert_eq!(is_kanji('東'), true);
+        assert_eq!(is_kanji('东'), false);
+        assert_eq!(is_kanji('あ'), false);
+        assert_eq!(is_kanji('a'), false);
+        assert_eq!(is_kanji('1'), false);
+        assert_eq!(is_kanji('_'), false);
     }
 
     #[test]

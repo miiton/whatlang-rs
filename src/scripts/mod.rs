@@ -1,4 +1,5 @@
 pub(crate) mod chars;
+mod common_use_kanji;
 mod detect;
 pub(crate) mod grouping;
 mod lang_mapping;
