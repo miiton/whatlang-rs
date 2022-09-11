@@ -1,7 +1,7 @@
 pub(crate) mod chars;
-mod common_use_kanji;
 mod detect;
 pub(crate) mod grouping;
+mod joyo_kanji;
 mod lang_mapping;
 mod script;
 

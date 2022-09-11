@@ -1,4 +1,4 @@
-use super::common_use_kanji::is_common_use_kanji;
+use super::joyo_kanji::is_joyo_kanji;
 
 pub(crate) fn is_cyrillic(ch: char) -> bool {
     matches!(ch,
@@ -88,7 +88,7 @@ pub(crate) fn is_hiragana(ch: char) -> bool {
 }
 
 pub(crate) fn is_kanji(ch: char) -> bool {
-    is_common_use_kanji(ch)
+    is_joyo_kanji(ch)
 }
 
 pub(crate) fn is_katakana(ch: char) -> bool {
